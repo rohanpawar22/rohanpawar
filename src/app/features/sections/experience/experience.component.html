@@ -1,0 +1,101 @@
+<section id="experience" class="experience">
+  <div class="experience__container">
+    <!-- Section Header -->
+    <div class="experience__header">
+      <span class="experience__label">Experience</span>
+      <h2 class="experience__title">Professional Journey</h2>
+      <p class="experience__subtitle">Expand to view full details</p>
+    </div>
+
+    <!-- Material Expansion Panel Timeline -->
+    <mat-accordion class="experience__accordion">
+      @for (exp of experiences; track exp.company + exp.role + exp.duration; let i = $index) {
+        <mat-expansion-panel 
+          appScrollAnimation
+          class="experience__panel"
+          [expanded]="expandedIndex() === i"
+          (opened)="expandedIndex.set(i)"
+          (closed)="expandedIndex() === i ? expandedIndex.set(null) : null">
+          
+          <!-- Panel Header -->
+          <mat-expansion-panel-header class="experience__panel-header">
+            <mat-panel-title class="experience__panel-title">
+              <div class="experience__header-content">
+                <div class="experience__timeline-dot"></div>
+                <div class="experience__header-text">
+                  <h3 class="experience__role">{{ exp.role }}</h3>
+                  <div class="experience__company">
+                    <mat-icon class="experience__icon">business</mat-icon>
+                    {{ exp.company }}
+                  </div>
+                </div>
+              </div>
+            </mat-panel-title>
+            <mat-panel-description class="experience__panel-description">
+              <mat-chip class="experience__duration-chip">
+                <mat-icon>schedule</mat-icon>
+                {{ exp.duration }}
+              </mat-chip>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <!-- Panel Content -->
+          <div class="experience__panel-content">
+            <!-- Description -->
+            <p class="experience__description">{{ exp.description }}</p>
+
+            <!-- Responsibilities Card -->
+            <mat-card class="experience__card" appearance="outlined">
+              <mat-card-header>
+                <mat-icon mat-card-avatar class="experience__card-icon">task_alt</mat-icon>
+                <mat-card-title>Key Responsibilities</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <ul class="experience__list">
+                  @for (responsibility of exp.responsibilities; track responsibility) {
+                    <li class="experience__list-item">{{ responsibility }}</li>
+                  }
+                </ul>
+              </mat-card-content>
+            </mat-card>
+
+            <!-- Achievements Card -->
+            @if (exp.achievements && exp.achievements.length) {
+              <mat-card class="experience__card experience__card--achievements" appearance="outlined">
+                <mat-card-header>
+                  <mat-icon mat-card-avatar class="experience__card-icon experience__card-icon--achievements">emoji_events</mat-icon>
+                  <mat-card-title>Achievements</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                  <ul class="experience__list">
+                    @for (achievement of exp.achievements; track achievement) {
+                      <li class="experience__list-item">{{ achievement }}</li>
+                    }
+                  </ul>
+                </mat-card-content>
+              </mat-card>
+            }
+
+            <!-- Technologies -->
+            <div class="experience__technologies">
+              <h4 class="experience__tech-title">
+                <mat-icon>code</mat-icon>
+                Technologies Used
+              </h4>
+              <mat-chip-set class="experience__chip-set">
+                @for (tech of exp.technologies; track tech) {
+                  <mat-chip 
+                    class="experience__tech-chip"
+                    [matTooltip]="'Click to learn more about ' + tech"
+                    matTooltipPosition="above">
+                    {{ tech }}
+                  </mat-chip>
+                }
+              </mat-chip-set>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      }
+    </mat-accordion>
+  </div>
+</section>

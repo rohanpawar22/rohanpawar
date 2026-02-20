@@ -1,0 +1,282 @@
+.skills {
+  padding: 6rem 0;
+  background: var(--bg-primary);
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  &__label {
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+  }
+
+  &__title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 0.5rem;
+  }
+
+  &__subtitle {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+
+  // Category Cards
+  &__category {
+    background: var(--card-bg) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: none !important;
+
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15) !important;
+      border-color: var(--primary-color) !important;
+
+      .skills__category-icon {
+        transform: rotate(10deg) scale(1.1);
+      }
+    }
+  }
+
+  &__category-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    padding: 1.5rem !important;
+    margin-bottom: 0 !important;
+
+    mat-card-title {
+      margin: 0 !important;
+    }
+  }
+
+  &__category-icon {
+    background: rgba(255, 255, 255, 0.2) !important;
+    color: white !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 48px !important;
+    height: 48px !important;
+    border-radius: 12px !important;
+    font-size: 1.5rem !important;
+    transition: transform 0.3s ease !important;
+  }
+
+  &__category-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: white;
+    margin: 0;
+  }
+
+  &__category-content {
+    padding: 1.5rem !important;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  // Skill Items
+  &__skill-item {
+    padding: 1rem;
+    border-radius: 12px;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+
+    &:hover {
+      transform: translateX(8px);
+      border-color: var(--primary-color);
+      background: var(--card-bg);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    &--hovered {
+      transform: translateX(8px);
+      border-color: var(--primary-color);
+      background: var(--card-bg);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+  }
+
+  &__skill-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__skill-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__skill-icon {
+    font-size: 1.25rem !important;
+    width: 1.25rem !important;
+    height: 1.25rem !important;
+    color: var(--primary-color) !important;
+    flex-shrink: 0;
+  }
+
+  &__skill-name {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  &__level-chip {
+    font-size: 0.75rem !important;
+    font-weight: 600 !important;
+    height: 24px !important;
+    padding: 0 0.75rem !important;
+    border-radius: 6px !important;
+    transition: all 0.2s ease !important;
+
+    &--expert {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+      color: white !important;
+      border: none !important;
+    }
+
+    &--advanced {
+      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+      color: white !important;
+      border: none !important;
+    }
+
+    &--proficient {
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%) !important;
+      color: white !important;
+      border: none !important;
+    }
+  }
+
+  // Progress Bar
+  &__progress-container {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &--visible {
+      max-height: 30px;
+      opacity: 1;
+      margin-top: 0.5rem;
+    }
+  }
+
+  &__progress-bar {
+    flex: 1;
+    height: 8px !important;
+    border-radius: 4px !important;
+    background: var(--border-color) !important;
+
+    ::ng-deep .mdc-linear-progress__bar-inner {
+      border-radius: 4px !important;
+    }
+
+    &--expert ::ng-deep .mdc-linear-progress__bar-inner {
+      background: linear-gradient(90deg, #10b981 0%, #059669 100%) !important;
+    }
+
+    &--advanced ::ng-deep .mdc-linear-progress__bar-inner {
+      background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%) !important;
+    }
+
+    &--proficient ::ng-deep .mdc-linear-progress__bar-inner {
+      background: linear-gradient(90deg, #f59e0b 0%, #d97706 100%) !important;
+    }
+  }
+
+  &__percentage {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    min-width: 45px;
+    text-align: right;
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  // Responsive
+  @media (max-width: 640px) {
+    padding: 4rem 0;
+
+    &__category-header {
+      padding: 1.25rem !important;
+    }
+
+    &__category-content {
+      padding: 1.25rem !important;
+    }
+
+    &__skill-item {
+      padding: 0.875rem;
+    }
+
+    &__skill-name {
+      font-size: 0.9375rem;
+    }
+  }
+}
+
+// Material overrides
+::ng-deep {
+  .skills__category {
+    .mat-mdc-card-header {
+      display: flex;
+      align-items: center;
+    }
+  }
+}

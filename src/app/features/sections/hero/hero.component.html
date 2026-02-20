@@ -1,0 +1,35 @@
+<section id="hero" class="hero">
+  <div class="hero__container">
+    <div class="hero__content">
+      <!-- Main Heading -->
+      <h1 class="hero__title">
+        Hi, I'm <span class="hero__name">{{ name }}</span>
+      </h1>
+
+      <!-- Animated Typing Text -->
+      <h2 class="hero__subtitle">
+        <span class="hero__subtitle-text">{{ displayedText() }}</span>
+        <span class="hero__cursor">|</span>
+      </h2>
+    </div>
+
+    <!-- Profile Image -->
+    <div class="hero__image">
+      <div class="hero__image-wrapper">
+        <img 
+          src="/assets/rohan_profile.jpg" 
+          alt="Rohan Pawar - Senior Frontend Developer"
+          class="hero__profile-img">
+        <div class="hero__image-glow"></div>
+      </div>
+    </div>
+
+    <!-- Animated Background -->
+    <div class="hero__background">
+      <div class="hero__gradient hero__gradient--1"></div>
+      <div class="hero__gradient hero__gradient--2"></div>
+      <div class="hero__gradient hero__gradient--3"></div>
+    </div>
+  </div>
+</section>
+ 

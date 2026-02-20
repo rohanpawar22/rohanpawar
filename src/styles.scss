@@ -1,1 +1,271 @@
-/* You can add global styles to this file, and also import other style files */
+// Include theming for Angular Material
+@use '@angular/material' as mat;
+@use './app/shared/styles/animations.scss' as *;
+
+// Global Styles and Theme System
+
+// CSS Variables for Light Theme
+:root,
+[data-theme='light'] {
+  // Primary colors - Blue Theme
+  --primary-color: #2563eb;
+  --primary-color-dark: #1d4ed8;
+  --primary-color-alpha: rgba(37, 99, 235, 0.1);
+  --primary-gradient: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+
+  // Background colors
+  --bg-primary: #ffffff;
+  --section-bg: #f8fafc;
+  --card-bg: #ffffff;
+  --header-bg: rgba(255, 255, 255, 0.9);
+  --badge-bg: rgba(37, 99, 235, 0.05);
+  --button-bg: #f1f5f9;
+  --button-hover-bg: #e2e8f0;
+  --input-bg: #ffffff;
+  --hover-bg: #f1f5f9;
+  --progress-bg: #e2e8f0;
+
+  // Text colors
+  --text-primary: #0f172a;
+  --text-secondary: #64748b;
+
+  // Border colors
+  --border-color: #e2e8f0;
+
+  // Shadows
+  --card-shadow: 0 10px 30px rgba(37, 99, 235, 0.1);
+
+  // Gradients for decorations
+  --gradient-1: rgba(59, 130, 246, 0.3);
+  --gradient-2: rgba(37, 99, 235, 0.3);
+  --gradient-3: rgba(14, 165, 233, 0.3);
+}
+
+// Dark Theme
+[data-theme='dark'] {
+  // Primary colors (blue for dark mode)
+  --primary-color: #3b82f6;
+  --primary-color-dark: #2563eb;
+  --primary-color-alpha: rgba(59, 130, 246, 0.15);
+  --primary-gradient: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+
+  // Background colors
+  --bg-primary: #0f172a;
+  --section-bg: #1e293b;
+  --card-bg: #1e293b;
+  --header-bg: rgba(15, 23, 42, 0.9);
+  --badge-bg: rgba(59, 130, 246, 0.1);
+  --button-bg: #334155;
+  --button-hover-bg: #475569;
+  --input-bg: #1e293b;
+  --hover-bg: #334155;
+  --progress-bg: #334155;
+
+  // Text colors
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+
+  // Border colors
+  --border-color: #334155;
+
+  // Shadows
+  --card-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+
+  // Gradients for decorations
+  --gradient-1: rgba(59, 130, 246, 0.25);
+  --gradient-2: rgba(37, 99, 235, 0.25);
+  --gradient-3: rgba(14, 165, 233, 0.25);
+}
+
+// Material Theme Configuration
+html {
+  height: 100%;
+  @include mat.theme((
+    color: (
+      primary: mat.$azure-palette,
+      tertiary: mat.$blue-palette,
+    ),
+    typography: (
+      plain-family: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+      brand-family: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+    ),
+    density: 0,
+  ));
+}
+
+// Global Resets and Base Styles
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  margin: 0;
+  height: 100%;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Typography
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: 600;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+button {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+p {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+// Links
+a {
+  color: inherit;
+  text-decoration: none;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+// Lists
+ul, ol {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+// Input elements
+input, textarea, select {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+// Labels and spans
+label, span {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+// Scrollbar Styling
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--section-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 5px;
+
+  &:hover {
+    background: var(--primary-color);
+  }
+}
+
+// Selection
+::selection {
+  background: var(--primary-color);
+  color: white;
+}
+
+::-moz-selection {
+  background: var(--primary-color);
+  color: white;
+}
+
+// Focus visible for accessibility
+*:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+// Smooth transitions for theme changes
+body,
+body * {
+  transition-property: background-color, border-color, color;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+}
+
+// Utility Classes
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section {
+  padding: 6rem 0;
+}
+
+// Animation keyframes
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// Responsive breakpoints
+@media (max-width: 1200px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 4rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 3rem 0;
+  }
+}

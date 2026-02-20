@@ -1,0 +1,170 @@
+<section id="projects" class="projects">
+  <div class="projects__container">
+    <!-- Section Header -->
+    <div class="projects__header">
+      <span class="projects__label">Projects</span>
+      <h2 class="projects__title">Featured Work</h2>
+      <p class="projects__subtitle">Click on any project to explore details</p>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="projects__grid">
+      @for (project of projects; track project.title; let i = $index) {
+        <mat-card 
+          appScrollAnimation
+          class="projects__card"
+          [class.projects__card--hovered]="hoveredProject() === i"
+          (mouseenter)="hoveredProject.set(i)"
+          (mouseleave)="hoveredProject.set(null)"
+          (click)="openProjectDetails(project)"
+          appearance="outlined">
+          
+          <mat-card-header class="projects__card-header">
+            <mat-icon mat-card-avatar class="projects__card-icon">folder_open</mat-icon>
+            <mat-card-title>
+              <h3 class="projects__card-title">{{ project.title }}</h3>
+            </mat-card-title>
+            <mat-card-subtitle>
+              <div class="projects__card-actions">
+                <button 
+                  mat-icon-button 
+                  class="projects__expand-btn"
+                  [matTooltip]="'View full details'"
+                  matTooltipPosition="left"
+                  (click)="$event.stopPropagation(); openProjectDetails(project)">
+                  <mat-icon>open_in_full</mat-icon>
+                </button>
+              </div>
+            </mat-card-subtitle>
+          </mat-card-header>
+
+          <mat-card-content class="projects__card-content">
+            <!-- Description Preview -->
+            <p class="projects__description">
+              {{ project.description }}
+            </p>
+
+            <!-- Achievements Preview (collapsed by default) -->
+            <div class="projects__achievements-preview">
+              <div class="projects__achievements-header">
+                <mat-icon>stars</mat-icon>
+                <span>{{ project.achievements.length }} Key Achievements</span>
+              </div>
+              
+              <!-- Shows on hover -->
+              <div class="projects__achievements-list" 
+                   [class.projects__achievements-list--visible]="hoveredProject() === i">
+                <ul>
+                  @for (achievement of project.achievements.slice(0, 2); track achievement) {
+                    <li>{{ achievement }}</li>
+                  }
+                  @if (project.achievements.length > 2) {
+                    <li class="projects__achievements-more">
+                      +{{ project.achievements.length - 2 }} more...
+                    </li>
+                  }
+                </ul>
+              </div>
+            </div>
+          </mat-card-content>
+
+          <mat-card-actions class="projects__card-footer">
+            <!-- Technologies -->
+            <mat-chip-set class="projects__tech-chips">
+              @for (tech of project.technologies.slice(0, 3); track tech) {
+                <mat-chip class="projects__tech-chip">
+                  {{ tech }}
+                </mat-chip>
+              }
+              @if (project.technologies.length > 3) {
+                <mat-chip class="projects__tech-chip projects__tech-chip--more">
+                  +{{ project.technologies.length - 3 }}
+                </mat-chip>
+              }
+            </mat-chip-set>
+          </mat-card-actions>
+
+          <!-- Hover Overlay -->
+          <div class="projects__hover-overlay" 
+               [class.projects__hover-overlay--visible]="hoveredProject() === i">
+            <mat-icon class="projects__hover-icon">visibility</mat-icon>
+            <span class="projects__hover-text">Click to view details</span>
+          </div>
+        </mat-card>
+      }
+    </div>
+  </div>
+
+  <!-- Material Dialog (Custom Modal) -->
+  @if (selectedProject()) {
+    <div class="projects__backdrop" (click)="closeProjectDetails()">
+      <mat-card class="projects__dialog" (click)="$event.stopPropagation()" appearance="outlined">
+        <!-- Close Button -->
+        <button 
+          mat-icon-button 
+          class="projects__close-btn"
+          (click)="closeProjectDetails()"
+          matTooltip="Close"
+          matTooltipPosition="left">
+          <mat-icon>close</mat-icon>
+        </button>
+
+        <!-- Dialog Header -->
+        <mat-card-header class="projects__dialog-header">
+          <mat-icon mat-card-avatar class="projects__dialog-icon">workspace_premium</mat-icon>
+          <mat-card-title>
+            <h2 class="projects__dialog-title">{{ selectedProject()!.title }}</h2>
+          </mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content class="projects__dialog-content">
+          <!-- Description -->
+          <div class="projects__dialog-section">
+            <p class="projects__dialog-description">{{ selectedProject()!.description }}</p>
+          </div>
+
+          <!-- Technologies -->
+          <div class="projects__dialog-section">
+            <h3 class="projects__dialog-subtitle">
+              <mat-icon>code</mat-icon>
+              Technologies & Tools
+            </h3>
+            <mat-chip-set class="projects__dialog-chips">
+              @for (tech of selectedProject()!.technologies; track tech) {
+                <mat-chip class="projects__dialog-chip" highlighted>
+                  {{ tech }}
+                </mat-chip>
+              }
+            </mat-chip-set>
+          </div>
+
+          <!-- Achievements -->
+          <div class="projects__dialog-section">
+            <h3 class="projects__dialog-subtitle">
+              <mat-icon>emoji_events</mat-icon>
+              Key Achievements
+            </h3>
+            <ul class="projects__dialog-achievements">
+              @for (achievement of selectedProject()!.achievements; track achievement) {
+                <li class="projects__dialog-achievement">
+                  <mat-icon>check_circle</mat-icon>
+                  {{ achievement }}
+                </li>
+              }
+            </ul>
+          </div>
+        </mat-card-content>
+
+        <mat-card-actions class="projects__dialog-actions">
+          <button 
+            mat-raised-button 
+            color="primary"
+            (click)="closeProjectDetails()">
+            <mat-icon>arrow_back</mat-icon>
+            Back to Projects
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  }
+</section>

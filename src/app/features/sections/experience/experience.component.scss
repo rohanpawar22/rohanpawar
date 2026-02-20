@@ -1,0 +1,339 @@
+.experience {
+  padding: 6rem 0;
+  background: var(--section-bg);
+
+  &__container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  &__label {
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+  }
+
+  &__title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 0.5rem;
+  }
+
+  &__subtitle {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  // Material Accordion
+  &__accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  &__panel {
+    background: var(--card-bg) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 16px !important;
+    box-shadow: none !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    overflow: hidden !important;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+      border-color: var(--primary-color) !important;
+    }
+
+    &.mat-expanded {
+      border-color: var(--primary-color) !important;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15) !important;
+    }
+  }
+
+  &__panel-header {
+    padding: 1.5rem !important;
+    height: auto !important;
+    min-height: 80px !important;
+
+    &.mat-expanded {
+      border-bottom: 1px solid var(--border-color);
+    }
+  }
+
+  &__panel-title {
+    flex: 1;
+    align-items: center !important;
+  }
+
+  &__header-content {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  &__timeline-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--primary-gradient);
+    border: 3px solid var(--bg-primary);
+    box-shadow: 0 0 0 3px var(--primary-color-alpha);
+    flex-shrink: 0;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      box-shadow: 0 0 0 3px var(--primary-color-alpha);
+    }
+    50% {
+      box-shadow: 0 0 0 6px var(--primary-color-alpha);
+    }
+  }
+
+  &__header-text {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__role {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 0.5rem;
+  }
+
+  &__company {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--primary-color);
+  }
+
+  &__icon {
+    font-size: 1.125rem !important;
+    width: 1.125rem !important;
+    height: 1.125rem !important;
+  }
+
+  &__panel-description {
+    align-items: center !important;
+    margin-left: 1rem !important;
+  }
+
+  &__duration-chip {
+    background: var(--badge-bg) !important;
+    color: var(--text-secondary) !important;
+    border: 1px solid var(--primary-color-alpha) !important;
+    font-weight: 500 !important;
+
+    mat-icon {
+      font-size: 1rem !important;
+      width: 1rem !important;
+      height: 1rem !important;
+      margin-right: 0.25rem;
+    }
+  }
+
+  // Panel Content
+  &__panel-content {
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    animation: slideIn 0.3s ease-out;
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  &__description {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  // Material Cards
+  &__card {
+    background: var(--bg-primary) !important;
+    border-color: var(--border-color) !important;
+    border-radius: 12px !important;
+    transition: all 0.2s ease !important;
+
+    &:hover {
+      border-color: var(--primary-color-alpha) !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+    }
+
+    &--achievements {
+      .experience__card-icon {
+        background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+      }
+    }
+
+    mat-card-header {
+      margin-bottom: 1rem;
+    }
+
+    mat-card-title {
+      font-size: 1.125rem !important;
+      font-weight: 600 !important;
+      color: var(--text-primary) !important;
+    }
+  }
+
+  &__card-icon {
+    background: var(--primary-gradient) !important;
+    color: white !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    font-size: 1.25rem !important;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  &__list-item {
+    display: flex;
+    align-items: start;
+    gap: 0.75rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+
+    &::before {
+      content: '▹';
+      color: var(--primary-color);
+      font-size: 1.25rem;
+      line-height: 1;
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+    }
+  }
+
+  // Technologies
+  &__technologies {
+    margin-top: 0.5rem;
+  }
+
+  &__tech-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 1rem;
+
+    mat-icon {
+      font-size: 1.25rem !important;
+      width: 1.25rem !important;
+      height: 1.25rem !important;
+      color: var(--primary-color);
+    }
+  }
+
+  &__chip-set {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  &__tech-chip {
+    background: var(--badge-bg) !important;
+    color: var(--primary-color) !important;
+    border: 1px solid var(--primary-color-alpha) !important;
+    font-weight: 500 !important;
+    font-size: 0.875rem !important;
+    transition: all 0.2s ease !important;
+    cursor: pointer !important;
+
+    &:hover {
+      background: var(--primary-color-alpha) !important;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+    }
+  }
+
+  // Responsive
+  @media (max-width: 768px) {
+    &__panel-header {
+      padding: 1rem !important;
+      min-height: 70px !important;
+    }
+
+    &__header-content {
+      gap: 1rem;
+    }
+
+    &__role {
+      font-size: 1.125rem;
+    }
+
+    &__company {
+      font-size: 0.9375rem;
+    }
+
+    &__panel-description {
+      display: none !important;
+    }
+
+    &__panel-content {
+      padding: 1.5rem 1rem;
+    }
+  }
+}
+
+// Material overrides
+::ng-deep {
+  .experience__panel {
+    .mat-expansion-panel-header-title,
+    .mat-expansion-panel-header-description {
+      margin: 0 !important;
+    }
+
+    .mat-expansion-indicator {
+      &::after {
+        color: var(--primary-color) !important;
+        border-width: 0 3px 3px 0 !important;
+        padding: 4px !important;
+      }
+    }
+  }
+}
