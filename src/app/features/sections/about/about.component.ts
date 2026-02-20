@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ScrollAnimationDirective } from '../../../shared/directives/scroll-animation.directive';
 
 /**
  * About Section Component
@@ -8,7 +9,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ScrollAnimationDirective],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss'
 })

@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ScrollAnimationDirective } from '../../../shared/directives/scroll-animation.directive';
 
 /**
  * Contact Section Component
@@ -9,7 +10,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ScrollAnimationDirective],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss'
 })

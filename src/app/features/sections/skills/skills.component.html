@@ -4,7 +4,6 @@
     <div class="skills__header">
       <span class="skills__label">Technical Skills</span>
       <h2 class="skills__title">Expertise & Tools</h2>
-      <p class="skills__subtitle">Hover over skills to see proficiency levels</p>
     </div>
 
     <!-- Skills Grid -->
@@ -21,43 +20,12 @@
           <mat-card-content class="skills__category-content">
             <div class="skills__list">
               @for (skill of category.skills; track skill.name) {
-                <div 
-                  class="skills__skill-item"
-                  [class.skills__skill-item--hovered]="hoveredSkill() === skill.name"
-                  (mouseenter)="onSkillHover(skill.name)"
-                  (mouseleave)="onSkillHover(null)">
-                  
-                  <div class="skills__skill-header">
-                    <div class="skills__skill-info">
-                      @if (skill.icon) {
-                        <mat-icon class="skills__skill-icon">{{ skill.icon }}</mat-icon>
-                      }
-                      <span class="skills__skill-name">{{ skill.name }}</span>
-                    </div>
-                    
-                    <mat-chip 
-                      class="skills__level-chip"
-                      [class.skills__level-chip--expert]="skill.level === 'Expert'"
-                      [class.skills__level-chip--advanced]="skill.level === 'Advanced'"
-                      [class.skills__level-chip--proficient]="skill.level === 'Proficient'"
-                      [matTooltip]="skill.level + ' level - ' + skill.percentage + '%'"
-                      matTooltipPosition="above">
-                      {{ skill.level }}
-                    </mat-chip>
-                  </div>
-
-                  <!-- Progress Bar (shows on hover) -->
-                  <div class="skills__progress-container" 
-                       [class.skills__progress-container--visible]="hoveredSkill() === skill.name">
-                    <mat-progress-bar 
-                      class="skills__progress-bar"
-                      [class.skills__progress-bar--expert]="skill.level === 'Expert'"
-                      [class.skills__progress-bar--advanced]="skill.level === 'Advanced'"
-                      [class.skills__progress-bar--proficient]="skill.level === 'Proficient'"
-                      mode="determinate" 
-                      [value]="skill.percentage">
-                    </mat-progress-bar>
-                    <span class="skills__percentage">{{ skill.percentage }}%</span>
+                <div class="skills__skill-item">
+                  <div class="skills__skill-info">
+                    @if (skill.icon) {
+                      <mat-icon class="skills__skill-icon">{{ skill.icon }}</mat-icon>
+                    }
+                    <span class="skills__skill-name">{{ skill.name }}</span>
                   </div>
                 </div>
               }

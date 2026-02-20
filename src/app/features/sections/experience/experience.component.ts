@@ -1,49 +1,56 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatExpansionModule } from '@angular/material/expansion';
 import { MatChipsModule } from '@angular/material/chips';
-import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
-import { MatTooltipModule } from '@angular/material/tooltip';
 import { ScrollAnimationDirective } from '../../../shared/directives/scroll-animation.directive';
+
+interface SubExperience {
+  role: string;
+  duration: string;
+  description: string;
+  responsibilities: string[];
+  technologies: string[];
+}
 
 interface Experience {
   role: string;
   company: string;
+  shortName: string;
   duration: string;
   description: string;
   responsibilities: string[];
   achievements?: string[];
   technologies: string[];
+  icon: string;
+  subExperience?: SubExperience;
 }
 
-/**
- * Experience Section Component
- * Displays professional work experience timeline
- */
 @Component({
   selector: 'app-experience',
   standalone: true,
   imports: [
     CommonModule,
-    MatExpansionModule,
     MatChipsModule,
-    MatCardModule,
     MatIconModule,
-    MatTooltipModule,
     ScrollAnimationDirective
   ],
   templateUrl: './experience.component.html',
   styleUrl: './experience.component.scss'
 })
 export class ExperienceComponent {
-  readonly expandedIndex = signal<number | null>(0);
+  readonly activeTab = signal(0);
+
+  selectTab(index: number): void {
+    this.activeTab.set(index);
+  }
 
   readonly experiences: Experience[] = [
     {
       role: 'Software Engineer',
       company: 'Coditas (Pune)',
+      shortName: 'Coditas',
       duration: 'Jun 2024 - Present',
+      icon: 'rocket_launch',
       description: 'Responsible for developing innovative UI features and architectural enhancements using Angular, contributing to two major projects: Medgami (a knowledge-sharing platform for doctors) and a comprehensive Angular Design System Library built from scratch.',
       responsibilities: [
         'Built pixel-perfect, reusable Angular components and optimized performance, contributing significantly to a seamless user experience across web applications',
@@ -62,7 +69,9 @@ export class ExperienceComponent {
     {
       role: 'Software Engineer',
       company: 'Onnet Systems (Bangalore)',
+      shortName: 'Onnet Systems',
       duration: 'Nov 2022 - May 2024',
+      icon: 'trending_up',
       description: 'Responsible for improving application performance and stability through Angular Framework for user and admin applications.',
       responsibilities: [
         'Developed a time-bound VSaaS Admin Console using Angular 17, creating intuitive control panels with modular components',
@@ -82,7 +91,9 @@ export class ExperienceComponent {
     {
       role: 'Software Engineer',
       company: 'Tech Mahindra (Pune)',
-      duration: 'Feb 2021 - Jun 2022',
+      shortName: 'Tech Mahindra',
+      duration: 'Nov 2020 - Jun 2022',
+      icon: 'code',
       description: 'Involved in developing web applications that handle the smooth running of orders through the system.',
       responsibilities: [
         'Contributed to the Flow team and developed the Flowmanage (Web) and Flowdesktop applications, which facilitated efficient order management',
@@ -94,19 +105,18 @@ export class ExperienceComponent {
         'Enhanced order processing capabilities through the development of critical Angular components',
         'Improved system reliability via fault analysis and debugging processes with increased efficiency'
       ],
-      technologies: ['Angular 8', 'TypeScript', 'JavaScript']
-    },
-    {
-      role: 'Internship Trainee',
-      company: 'Tech Mahindra (Pune)',
-      duration: 'Nov 2020 - Jan 2021',
-      description: 'Underwent training in web technologies: HTML, CSS, and Javascript to support learning application skills for software development.',
-      responsibilities: [
-        'Trained on fundamental web technologies including HTML, CSS, and JavaScript, supporting initial software development skills',
-        'Developed mini-projects during training, allowing for the application of learned web development skills in a practical context',
-        'Enhanced problem-solving abilities through practical experience in web technologies'
-      ],
-      technologies: ['HTML', 'CSS', 'JavaScript']
+      technologies: ['Angular 8', 'TypeScript', 'JavaScript'],
+      subExperience: {
+        role: 'Internship Trainee',
+        duration: 'Nov 2020 - Jan 2021',
+        description: 'Underwent training in web technologies: HTML, CSS, and Javascript to support learning application skills for software development.',
+        responsibilities: [
+          'Trained on fundamental web technologies including HTML, CSS, and JavaScript',
+          'Developed mini-projects during training, applying web development skills in a practical context',
+          'Enhanced problem-solving abilities through practical experience in web technologies'
+        ],
+        technologies: ['HTML', 'CSS', 'JavaScript']
+      }
     }
   ];
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ScrollAnimationDirective } from '../../../shared/directives/scroll-animation.directive';
 
 /**
  * Passion Section Component
@@ -8,7 +9,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-passion',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ScrollAnimationDirective],
   templateUrl: './passion.component.html',
   styleUrl: './passion.component.scss'
 })
