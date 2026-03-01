@@ -136,17 +136,97 @@
     }
   }
 
-  &__form {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
+  &__form-wrapper {
+    display: flex;
+    flex-direction: column;
     border-radius: 12px;
-    padding: 2rem;
+    overflow: hidden;
+    border: 1px solid transparent;
+    transition: border-color 0.3s ease;
+
+    &:has(.contact__form-accordion--open) {
+      background: var(--card-bg);
+      border-color: var(--primary-color-alpha);
+    }
+  }
+
+  &__form-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    padding: 1.125rem 1.5rem;
+    font-size: 1.0625rem;
+    font-weight: 600;
+    font-family: inherit;
+    color: white;
+    background: linear-gradient(135deg, #6366f1 0%, #2563eb 50%, #0ea5e9 100%);
+    background-size: 200% 200%;
+    background-position: left center;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-position 0.4s ease, border-radius 0.2s ease;
+
+    &:hover {
+      background-position: right center;
+    }
+
+    &--open {
+      border-radius: 12px 12px 0 0;
+    }
+  }
+
+  &__form-toggle-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  &__form-toggle-chevron {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    margin-left: auto;
+    transition: transform 0.35s ease;
+
+    &--open {
+      transform: rotate(180deg);
+    }
+  }
+
+  // Accordion container
+  &__form-accordion {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.35s ease;
+    opacity: 0;
+    border-top: 0px solid var(--border-color);
+
+    &--open {
+      max-height: 900px;
+      opacity: 1;
+      border-top-width: 1px;
+    }
+  }
+
+  &__form {
+    background: transparent;
+    padding: 1.75rem;
+
+    &-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+    }
 
     &-title {
       font-size: 1.5rem;
       font-weight: 600;
       color: var(--text-primary);
-      margin: 0 0 2rem;
+      margin: 0;
     }
 
     &-group {
@@ -236,12 +316,7 @@
 }
 
 @keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
+

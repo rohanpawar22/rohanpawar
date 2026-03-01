@@ -83,6 +83,15 @@
     background-clip: text;
   }
 
+  &__tag {
+    font-weight: 400;
+    color: #64748b;
+    font-family: 'Courier New', monospace;
+
+    &--open { margin-right: 0.25rem; }
+    &--close { margin-left: 0.25rem; }
+  }
+
   &__cursor {
     color: var(--primary-color);
     font-weight: 400;

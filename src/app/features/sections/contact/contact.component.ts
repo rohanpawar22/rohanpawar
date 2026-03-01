@@ -29,6 +29,7 @@ export class ContactComponent {
 
   readonly isSubmitting = signal(false);
   readonly submitSuccess = signal(false);
+  readonly formOpen = signal(false);
 
   onSubmit(): void {
     // This is a placeholder - implement actual form submission logic
