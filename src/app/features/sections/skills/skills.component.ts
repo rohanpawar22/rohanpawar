@@ -16,6 +16,8 @@ interface Skill {
 
 interface SkillCategory {
   title: string;
+  icon: string;
+  iconBg: string;
   skills: Skill[];
 }
 
@@ -44,6 +46,8 @@ export class SkillsComponent {
   readonly skillCategories: SkillCategory[] = [
     {
       title: 'Frontend Technologies',
+      icon: 'code',
+      iconBg: 'linear-gradient(135deg, #2563eb, #60a5fa)',
       skills: [
         { name: 'Angular', level: 'Expert', percentage: 95, icon: 'code' },
         { name: 'TypeScript', level: 'Advanced', percentage: 90, icon: 'code' },
@@ -53,7 +57,9 @@ export class SkillsComponent {
       ]
     },
     {
-      title: 'State Management & Libraries',
+      title: 'State Management',
+      icon: 'storage',
+      iconBg: 'linear-gradient(135deg, #a855f7, #7c3aed)',
       skills: [
         { name: 'NGRX', level: 'Advanced', percentage: 85, icon: 'storage' },
         { name: 'Signal Store', level: 'Advanced', percentage: 85, icon: 'signal_cellular_alt' },
@@ -62,6 +68,8 @@ export class SkillsComponent {
     },
     {
       title: 'UI Frameworks & Design',
+      icon: 'palette',
+      iconBg: 'linear-gradient(135deg, #f43f5e, #ec4899)',
       skills: [
         { name: 'Angular Material', level: 'Advanced', percentage: 90, icon: 'widgets' },
         { name: 'Tailwind CSS', level: 'Advanced', percentage: 85, icon: 'palette' },
@@ -70,6 +78,8 @@ export class SkillsComponent {
     },
     {
       title: 'Tools & Development',
+      icon: 'build',
+      iconBg: 'linear-gradient(135deg, #f97316, #eab308)',
       skills: [
         { name: 'Git', level: 'Advanced', percentage: 90, icon: 'source' },
         { name: 'RESTful APIs', level: 'Advanced', percentage: 88, icon: 'api' },

@@ -10,12 +10,12 @@
     <div class="skills__grid">
       @for (category of skillCategories; track category.title) {
         <mat-card appScrollAnimation class="skills__category" appearance="outlined">
-          <mat-card-header class="skills__category-header">
-            <mat-icon mat-card-avatar class="skills__category-icon">folder_special</mat-icon>
-            <mat-card-title>
-              <h3 class="skills__category-title">{{ category.title }}</h3>
-            </mat-card-title>
-          </mat-card-header>
+          <div class="skills__category-header">
+            <div class="skills__category-icon-box" [style.background]="category.iconBg">
+              <mat-icon>{{ category.icon }}</mat-icon>
+            </div>
+            <h3 class="skills__category-title">{{ category.title }}</h3>
+          </div>
           
           <mat-card-content class="skills__category-content">
             <div class="skills__list">

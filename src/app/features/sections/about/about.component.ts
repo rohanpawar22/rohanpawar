@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 import { ScrollAnimationDirective } from '../../../shared/directives/scroll-animation.directive';
 
 /**
@@ -9,7 +10,7 @@ import { ScrollAnimationDirective } from '../../../shared/directives/scroll-anim
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [CommonModule, ScrollAnimationDirective],
+  imports: [CommonModule, MatIconModule, ScrollAnimationDirective],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss'
 })
@@ -28,8 +29,23 @@ export class AboutComponent {
   ];
 
   readonly highlights = [
-    { value: '4.5+', label: 'Years Experience' },
-    { value: 'Frontend', label: 'Specialization' },
-    { value: 'Pune', label: 'Location' }
+    {
+      title: 'Team Player',
+      description: 'Believe in collaborative growth and knowledge sharing',
+      iconBg: 'linear-gradient(135deg, #f43f5e, #ec4899)',
+      matIcon: 'favorite'
+    },
+    {
+      title: 'Continuous Learner',
+      description: 'Always exploring new technologies and best practices',
+      iconBg: 'linear-gradient(135deg, #a855f7, #7c3aed)',
+      matIcon: 'lightbulb'
+    },
+    {
+      title: 'Problem Solver',
+      description: 'Turning complex challenges into simple solutions',
+      iconBg: 'linear-gradient(135deg, #f97316, #eab308)',
+      matIcon: 'coffee'
+    }
   ];
 }

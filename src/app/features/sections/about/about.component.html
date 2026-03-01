@@ -26,12 +26,17 @@
         </div>
       </div>
 
-      <!-- Right Side: Stats -->
+      <!-- Right Side: Trait Cards -->
       <div class="about__stats">
-        @for (stat of highlights; track stat.label) {
+        @for (stat of highlights; track stat.title) {
           <div class="about__stat-card" appScrollAnimation>
-            <div class="about__stat-value">{{ stat.value }}</div>
-            <div class="about__stat-label">{{ stat.label }}</div>
+            <div class="about__stat-icon" [style.background]="stat.iconBg">
+              <mat-icon>{{ stat.matIcon }}</mat-icon>
+            </div>
+            <div class="about__stat-body">
+              <h4 class="about__stat-title">{{ stat.title }}</h4>
+              <p class="about__stat-desc">{{ stat.description }}</p>
+            </div>
           </div>
         }
       </div>

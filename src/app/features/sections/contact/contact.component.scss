@@ -1,5 +1,12 @@
 .contact {
   padding: 6rem 0;
+  background:
+    radial-gradient(ellipse at 30% 70%, rgba(37, 99, 235, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 10%, rgba(99, 102, 241, 0.05) 0%, transparent 50%),
+    radial-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+    var(--bg-primary);
+  background-size: auto, auto, 28px 28px, auto;
+  background-attachment: fixed, fixed, fixed, fixed;
 
   &__container {
     max-width: 1200px;
@@ -67,19 +74,46 @@
     }
 
     &-icon {
-      width: 48px;
-      height: 48px;
-      background: var(--primary-gradient);
-      border-radius: 10px;
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
       color: white;
+      text-decoration: none;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      cursor: pointer;
 
       svg {
         width: 24px;
         height: 24px;
+      }
+
+      &:hover {
+        transform: translateY(-3px) scale(1.05);
+      }
+
+      &--email {
+        background: linear-gradient(135deg, #ea4335, #fbbc05);
+        box-shadow: 0 4px 14px rgba(234, 67, 53, 0.35);
+
+        &:hover { box-shadow: 0 8px 20px rgba(234, 67, 53, 0.5); }
+      }
+
+      &--linkedin {
+        background: linear-gradient(135deg, #0077b5, #00a0dc);
+        box-shadow: 0 4px 14px rgba(0, 119, 181, 0.35);
+
+        &:hover { box-shadow: 0 8px 20px rgba(0, 119, 181, 0.5); }
+      }
+
+      &--github {
+        background: linear-gradient(135deg, #24292e, #57606a);
+        box-shadow: 0 4px 14px rgba(36, 41, 46, 0.4);
+
+        &:hover { box-shadow: 0 8px 20px rgba(36, 41, 46, 0.55); }
       }
     }
 
@@ -163,15 +197,19 @@
       font-weight: 600;
       font-family: inherit;
       color: white;
-      background: var(--primary-gradient);
+      background: linear-gradient(135deg, #6366f1 0%, #2563eb 50%, #0ea5e9 100%);
+      background-size: 200% 200%;
+      background-position: left center;
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.4s ease;
+      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.35);
 
       &:hover:not(:disabled) {
+        background-position: right center;
         transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+        box-shadow: 0 8px 24px rgba(37, 99, 235, 0.5);
       }
 
       &:active:not(:disabled) {

@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
@@ -38,12 +38,6 @@ interface Experience {
   styleUrl: './experience.component.scss'
 })
 export class ExperienceComponent {
-  readonly activeTab = signal(0);
-
-  selectTab(index: number): void {
-    this.activeTab.set(index);
-  }
-
   readonly experiences: Experience[] = [
     {
       role: 'Software Engineer',

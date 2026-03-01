@@ -1,6 +1,12 @@
 .skills {
   padding: 6rem 0;
-  background: var(--bg-primary);
+  background:
+    radial-gradient(ellipse at 80% 50%, rgba(99, 102, 241, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 10% 80%, rgba(37, 99, 235, 0.05) 0%, transparent 50%),
+    radial-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+    var(--bg-primary);
+  background-size: auto, auto, 28px 28px, auto;
+  background-attachment: fixed, fixed, fixed, fixed;
 
   &__container {
     max-width: 1400px;
@@ -63,44 +69,45 @@
       box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15) !important;
       border-color: var(--primary-color) !important;
 
-      .skills__category-icon {
-        transform: rotate(10deg) scale(1.1);
+      .skills__category-icon-box {
+        transform: rotate(8deg) scale(1.1);
       }
     }
   }
 
   &__category-header {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-    padding: 1.5rem !important;
-    margin-bottom: 0 !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background: var(--card-bg);
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
 
-    mat-card-title {
-      margin: 0 !important;
+  &__category-icon-box {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+
+    mat-icon {
+      color: white;
+      font-size: 1.375rem !important;
+      width: 1.375rem !important;
+      height: 1.375rem !important;
     }
   }
 
-  &__category-icon {
-    background: rgba(255, 255, 255, 0.25) !important;
-    color: white !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 48px !important;
-    height: 48px !important;
-    border-radius: 12px !important;
-    font-size: 1.5rem !important;
-    transition: transform 0.3s ease !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  }
-
   &__category-title {
-    font-size: 1.125rem;
+    font-size: 1rem;
     font-weight: 700;
-    color: white !important;
+    color: var(--text-primary) !important;
     margin: 0;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    letter-spacing: 0.3px;
+    text-shadow: none;
   }
 
   &__category-content {
@@ -181,30 +188,4 @@
   }
 }
 
-// Material overrides
-::ng-deep {
-  .skills__category {
-    .mat-mdc-card-header {
-      display: flex;
-      align-items: center;
-    }
-  }
-}
 
-// Light mode overrides
-:host-context([data-theme='light']) {
-  .skills__category-header {
-    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%) !important;
-  }
-
-  .skills__category-icon {
-    background: rgba(30, 64, 175, 0.15) !important;
-    color: #1e40af !important;
-    box-shadow: 0 2px 8px rgba(30, 64, 175, 0.15);
-  }
-
-  .skills__category-title {
-    color: #1e40af !important;
-    text-shadow: none;
-  }
-}
