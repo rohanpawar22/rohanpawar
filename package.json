@@ -7,7 +7,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "deploy": "ng build --configuration production --base-href=/rohanpawar/ && npx angular-cli-ghpages --dir=dist/rohan-portfolio/browser"
   },
   "keywords": [
     "angular",
@@ -48,6 +49,8 @@
     "@angular/cli": "^21.1.4",
     "@angular/compiler-cli": "^21.1.0",
     "@angular/material": "^21.1.4",
+    "angular-cli-ghpages": "^3.0.2",
+    "gh-pages": "^6.3.0",
     "jsdom": "^27.1.0",
     "typescript": "~5.9.2",
     "vitest": "^4.0.8"
