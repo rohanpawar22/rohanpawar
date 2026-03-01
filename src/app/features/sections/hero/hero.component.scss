@@ -28,6 +28,10 @@
     position: relative;
     z-index: 1;
     animation: fadeInUp 0.8s ease-out;
+
+    @media (max-width: 968px) {
+      text-align: center;
+    }
   }
 
   &__badge {
@@ -74,6 +78,10 @@
     align-items: center;
     gap: 0.25rem;
     min-height: 3rem;
+
+    @media (max-width: 968px) {
+      justify-content: center;
+    }
   }
 
   &__subtitle-text {

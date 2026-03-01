@@ -3,6 +3,14 @@
   position: relative;
   overflow: hidden;
 
+  @media (max-width: 968px) {
+    padding: 4rem 0;
+  }
+
+  @media (max-width: 600px) {
+    padding: 3rem 0;
+  }
+
   // Background Wallpaper
   &__wallpaper {
     position: absolute;
@@ -29,11 +37,19 @@
     padding: 0 2rem;
     position: relative;
     z-index: 1;
+
+    @media (max-width: 600px) {
+      padding: 0 1.25rem;
+    }
   }
 
   &__header {
     text-align: center;
     margin-bottom: 4rem;
+
+    @media (max-width: 968px) {
+      margin-bottom: 2rem;
+    }
   }
 
   &__label {
@@ -67,7 +83,7 @@
 
     @media (max-width: 968px) {
       grid-template-columns: 1fr;
-      gap: 3rem;
+      gap: 2rem;
     }
   }
 
@@ -75,6 +91,11 @@
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+
+    @media (max-width: 968px) {
+      align-items: center;
+      text-align: center;
+    }
   }
 
   &__icon {
@@ -86,6 +107,11 @@
     align-items: center;
     justify-content: center;
     color: white;
+    flex-shrink: 0;
+
+    @media (max-width: 968px) {
+      margin: 0 auto;
+    }
 
     svg {
       width: 32px;
@@ -116,6 +142,10 @@
     gap: 1rem;
     margin-top: 1rem;
     flex-wrap: wrap;
+
+    @media (max-width: 968px) {
+      justify-content: center;
+    }
   }
 
   &__link {
@@ -164,7 +194,12 @@
     justify-content: center;
 
     @media (max-width: 968px) {
-      height: 400px;
+      height: 280px;
+      width: 100%;
+    }
+
+    @media (max-width: 600px) {
+      height: 220px;
     }
   }
 
@@ -186,10 +221,20 @@
     object-fit: cover;
     display: block;
     transition: transform 0.5s ease;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
 
     &:hover {
       transform: scale(1.05);
     }
+  }
+
+  &__bike-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    cursor: default;
   }
 
   &__decoration {

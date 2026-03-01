@@ -67,7 +67,10 @@
           <img 
             src="/assets/rr_bike.jpg" 
             alt="Motorbike Adventures" 
-            class="passion__bike-img">
+            class="passion__bike-img"
+            draggable="false"
+            (contextmenu)="$event.preventDefault()">
+          <div class="passion__bike-overlay"></div>
         </div>
         <div class="passion__decoration passion__decoration--1"></div>
         <div class="passion__decoration passion__decoration--2"></div>
