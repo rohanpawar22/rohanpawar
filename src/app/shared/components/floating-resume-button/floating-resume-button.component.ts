@@ -91,6 +91,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 })
 export class FloatingResumeButtonComponent {
   openResume(): void {
-    window.open('/assets/RohanPawar_Angular.pdf', '_blank');
+    window.open('assets/RohanPawar_Angular.pdf', '_blank');
   }
 }
