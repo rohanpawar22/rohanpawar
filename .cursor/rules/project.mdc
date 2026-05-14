@@ -1,0 +1,24 @@
+---
+description: Rohan portfolio — repo conventions and scope
+alwaysApply: true
+---
+
+# Project
+
+Angular portfolio for a senior frontend developer. Production deploy uses `npm run deploy` (GitHub Pages with `--base-href=/rohanpawar/`).
+
+## Layout
+
+- **Sections (page blocks):** `src/app/features/sections/`
+- **Shared UI and directives:** `src/app/shared/`
+- **Cross-cutting services:** `src/app/core/services/`
+
+## Editing
+
+- Match naming, imports, and patterns already used in nearby files.
+- Keep changes scoped to the task; avoid drive-by refactors or unrelated files.
+- Do not add documentation or markdown files unless the user asks.
+
+## Formatting
+
+Project Prettier: `singleQuote`, `printWidth: 100`. Use the `angular` parser for `*.html` per `package.json` overrides.

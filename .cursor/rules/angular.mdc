@@ -1,0 +1,38 @@
+---
+description: Angular 21 standalone patterns for this portfolio
+globs:
+  - src/**/*.ts
+  - src/**/*.html
+  - src/**/*.scss
+alwaysApply: false
+---
+
+# Angular (this repo)
+
+## Components
+
+- Use **standalone** components: `standalone: true` and an explicit `imports` array.
+- Prefix selectors with `app` (e.g. `app-hero`), per Angular project `prefix`.
+- Colocate templates and styles: `templateUrl` / `styleUrl` with `.html` / `.scss` next to the `.ts` file.
+
+## Templates
+
+- Prefer **built-in control flow**: `@if`, `@for`, `@switch` — not `*ngIf` / `*ngFor` for new code.
+- Always use a **`track`** expression on `@for` (`track $index` only when identity is truly index-based).
+
+## State
+
+- Prefer **signals** for interactive UI state: `readonly foo = signal(...)` and `foo()` in templates.
+
+## Angular Material
+
+- Import only the Material modules the component needs into `imports` (e.g. `MatButtonModule`), not whole feature barrels.
+
+## Styles
+
+- Component-specific rules in the component `.scss`. Shared tokens and globals live in `src/styles.scss`.
+
+## Avoid
+
+- New **NgModules** for features — stay standalone.
+- Empty or silent `catch` blocks; match existing error-handling style in services/components.

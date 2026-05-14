@@ -53,7 +53,8 @@ export class SkillsComponent {
         { name: 'TypeScript', level: 'Advanced', percentage: 90, icon: 'code' },
         { name: 'JavaScript', level: 'Advanced', percentage: 88, icon: 'javascript' },
         { name: 'HTML5', level: 'Expert', percentage: 95, icon: 'html' },
-        { name: 'CSS3', level: 'Advanced', percentage: 90, icon: 'css' }
+        { name: 'CSS3', level: 'Advanced', percentage: 90, icon: 'css' },
+        { name: 'Microfrontends', level: 'Advanced', percentage: 85, icon: 'hub' }
       ]
     },
     {
@@ -72,6 +73,7 @@ export class SkillsComponent {
       iconBg: 'linear-gradient(135deg, #f43f5e, #ec4899)',
       skills: [
         { name: 'Angular Material', level: 'Advanced', percentage: 90, icon: 'widgets' },
+        { name: 'PrimeNG', level: 'Advanced', percentage: 88, icon: 'view_quilt' },
         { name: 'Tailwind CSS', level: 'Advanced', percentage: 85, icon: 'palette' },
         { name: 'Responsive Design', level: 'Expert', percentage: 95, icon: 'devices' }
       ]
