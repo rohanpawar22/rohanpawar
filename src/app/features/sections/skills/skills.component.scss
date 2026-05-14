@@ -138,9 +138,8 @@
       background: var(--hover-bg);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 
-      .skills__skill-icon {
-        transform: scale(1.15);
-        color: var(--primary-color);
+      .skills__skill-logo {
+        transform: scale(1.08);
       }
     }
   }
@@ -151,13 +150,12 @@
     gap: 0.75rem;
   }
 
-  &__skill-icon {
-    font-size: 1.25rem !important;
-    width: 1.25rem !important;
-    height: 1.25rem !important;
-    color: var(--primary-color) !important;
+  &__skill-logo {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
     flex-shrink: 0;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease;
   }
 
   &__skill-name {

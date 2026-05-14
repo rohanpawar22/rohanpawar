@@ -22,9 +22,15 @@
               @for (skill of category.skills; track skill.name) {
                 <div class="skills__skill-item">
                   <div class="skills__skill-info">
-                    @if (skill.icon) {
-                      <mat-icon class="skills__skill-icon">{{ skill.icon }}</mat-icon>
-                    }
+                    <img
+                      class="skills__skill-logo"
+                      [src]="skill.logo"
+                      alt=""
+                      width="28"
+                      height="28"
+                      loading="lazy"
+                      decoding="async"
+                    />
                     <span class="skills__skill-name">{{ skill.name }}</span>
                   </div>
                 </div>
