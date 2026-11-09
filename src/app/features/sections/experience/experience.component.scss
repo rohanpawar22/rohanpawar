@@ -157,6 +157,66 @@
     color: var(--primary-color);
   }
 
+  // ── Role progression (multiple roles at one company) ──
+  &__positions {
+    list-style: none;
+    margin: 0.5rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &__position {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    column-gap: 0.5rem;
+    padding-left: 1.25rem;
+
+    // connector line to the next role
+    &:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 4px;
+      top: 0.9rem;
+      bottom: -0.6rem;
+      width: 2px;
+      background: var(--border-color);
+    }
+
+    &.is-current .experience__position-dot {
+      background: var(--primary-color);
+      border-color: var(--primary-color);
+      box-shadow: 0 0 8px rgba(37, 99, 235, 0.55);
+    }
+  }
+
+  &__position-dot {
+    position: absolute;
+    left: 0;
+    top: 0.35rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--badge-bg);
+    border: 2px solid var(--border-color);
+    box-sizing: border-box;
+  }
+
+  &__position-role {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  &__position-duration {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+
   &__company-icon {
     font-size: 0.95rem !important;
     width: 0.95rem !important;

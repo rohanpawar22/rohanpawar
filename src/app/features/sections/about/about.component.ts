@@ -15,7 +15,7 @@ import { ScrollAnimationDirective } from '../../../shared/directives/scroll-anim
   styleUrl: './about.component.scss'
 })
 export class AboutComponent {
-  readonly aboutText = `4.5 years of experience as a Frontend Software Engineer specializing in Angular and modern web technologies. 
+  readonly aboutText = `5+ years of experience as a Senior Frontend Software Engineer specializing in Angular and modern web technologies. 
   Skilled in developing secure, scalable, and high-performance web applications following Agile methodologies. 
   Experienced in accessibility, and full SDLC processes within enterprise environments.`;
 

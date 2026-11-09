@@ -34,6 +34,17 @@
                   <mat-icon class="experience__company-icon">business</mat-icon>
                   {{ exp.company }}
                 </span>
+                @if (exp.positions) {
+                  <ul class="experience__positions">
+                    @for (pos of exp.positions; track pos.role; let first = $first) {
+                      <li class="experience__position" [class.is-current]="first">
+                        <span class="experience__position-dot"></span>
+                        <span class="experience__position-role">{{ pos.role }}</span>
+                        <span class="experience__position-duration">{{ pos.duration }}</span>
+                      </li>
+                    }
+                  </ul>
+                }
               </div>
               <div class="experience__card-actions">
                 <span class="experience__duration">

@@ -13,6 +13,11 @@ interface SubExperience {
   technologies: string[];
 }
 
+interface Position {
+  role: string;
+  duration: string;
+}
+
 interface Experience {
   role: string;
   company: string;
@@ -24,6 +29,8 @@ interface Experience {
   technologies: string[];
   icon: string;
   subExperience?: SubExperience;
+  /** Role progression within the same company, newest first */
+  positions?: Position[];
 }
 
 @Component({
@@ -53,11 +60,15 @@ export class ExperienceComponent {
   }
   readonly experiences: Experience[] = [
     {
-      role: 'Software Engineer',
+      role: 'Senior Software Engineer',
       company: 'Coditas (Pune)',
       shortName: 'Coditas',
       duration: 'Jun 2024 - Present',
       icon: 'rocket_launch',
+      positions: [
+        { role: 'Senior Software Engineer', duration: 'Oct 2026 - Present' },
+        { role: 'Software Engineer', duration: 'Jun 2024 - Sep 2026' }
+      ],
       description: 'Building Angular features and a Design System Library for Medgami, a knowledge-sharing platform for doctors.',
       responsibilities: [
         'Architected a scalable Angular Design System Library with 25+ reusable UI components, ensuring consistency across enterprise apps',
