@@ -1,6 +1,11 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
+import {
+  CONTACT_LIMITS,
+  ContactService,
+  RateLimitedError
+} from '../../../core/services/contact.service';
 import { ScrollAnimationDirective } from '../../../shared/directives/scroll-animation.directive';
 
 /**
@@ -27,29 +32,46 @@ export class ContactComponent {
     message: ''
   });
 
+  /** Honeypot value; bound to a hidden input that only bots fill in */
+  honeypot = '';
+
   readonly isSubmitting = signal(false);
   readonly submitSuccess = signal(false);
+  readonly submitError = signal(false);
+  readonly rateLimited = signal(false);
+  readonly limits = CONTACT_LIMITS;
   readonly formOpen = signal(false);
 
-  onSubmit(): void {
-    // This is a placeholder - implement actual form submission logic
+  private readonly contactService = inject(ContactService);
+
+  async onSubmit(form: NgForm): Promise<void> {
+    if (form.invalid || this.isSubmitting()) {
+      form.control.markAllAsTouched();
+      return;
+    }
+
     this.isSubmitting.set(true);
-    
-    setTimeout(() => {
-      this.isSubmitting.set(false);
-      this.submitSuccess.set(true);
-      
-      // Reset form
-      this.formData.set({
-        name: '',
-        email: '',
-        message: ''
+    this.submitError.set(false);
+    this.submitSuccess.set(false);
+
+    try {
+      await this.contactService.send({
+        ...this.formData(),
+        website: this.honeypot,
+        page: window.location.href
       });
 
-      // Hide success message after 3 seconds
-      setTimeout(() => {
-        this.submitSuccess.set(false);
-      }, 3000);
-    }, 1000);
+      form.resetForm();
+      this.formData.set({ name: '', email: '', message: '' });
+      this.submitSuccess.set(true);
+      setTimeout(() => this.submitSuccess.set(false), 4000);
+    } catch (err) {
+      // Keep what the visitor typed so they can retry
+      console.error('Contact form submission failed', err);
+      this.rateLimited.set(err instanceof RateLimitedError);
+      this.submitError.set(true);
+    } finally {
+      this.isSubmitting.set(false);
+    }
   }
 }

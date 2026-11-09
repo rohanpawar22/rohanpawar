@@ -74,8 +74,19 @@
 
         <!-- Accordion body -->
         <div class="contact__form-accordion" [class.contact__form-accordion--open]="formOpen()">
-          <form class="contact__form" (ngSubmit)="onSubmit()">
+          <form class="contact__form" #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)">
 
+            <!-- Honeypot: hidden from people, bots fill it in -->
+            <div class="contact__honeypot" aria-hidden="true">
+              <label for="website">Website</label>
+              <input
+                type="text"
+                id="website"
+                name="website"
+                tabindex="-1"
+                autocomplete="off"
+                [(ngModel)]="honeypot">
+            </div>
 
             <div class="contact__form-group">
               <label for="name" class="contact__form-label">Name</label>
@@ -86,6 +97,7 @@
                 [(ngModel)]="formData().name"
                 name="name"
                 required
+                [maxlength]="limits.name"
                 placeholder="Your name">
             </div>
 
@@ -98,6 +110,8 @@
                 [(ngModel)]="formData().email"
                 name="email"
                 required
+                email
+                [maxlength]="limits.email"
                 placeholder="your.email@example.com">
             </div>
 
@@ -110,12 +124,23 @@
                 name="message"
                 rows="5"
                 required
+                [maxlength]="limits.message"
                 placeholder="Your message..."></textarea>
             </div>
 
             @if (submitSuccess()) {
-              <div class="contact__success">
-                Message sent successfully! (This is a demo form)
+              <div class="contact__success" role="status">
+                Thanks! Your message has been sent. I'll get back to you soon.
+              </div>
+            }
+
+            @if (submitError()) {
+              <div class="contact__error" role="alert">
+                @if (rateLimited()) {
+                  Lots of messages coming in right now. Please try again in a few minutes or email me at {{ email }}
+                } @else {
+                  Something went wrong. Please try again or email me at {{ email }}
+                }
               </div>
             }
 

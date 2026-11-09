@@ -329,6 +329,26 @@
     margin-bottom: 1rem;
     animation: slideDown 0.3s ease;
   }
+
+  &__error {
+    background: #ef4444;
+    color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    animation: slideDown 0.3s ease;
+  }
+
+  // Off-screen spam trap (not display:none, which some bots skip)
+  &__honeypot {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
 }
 
 @keyframes slideDown {
